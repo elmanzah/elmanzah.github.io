@@ -3,17 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Luxlen Talent — Talent for the AI era</title>
-<meta name="description" content="Luxlen Talent helps organizations define and fill the emerging roles of applied AI — forward-deployed engineers, applied AI leaders, and the data talent behind them.">
+<title>Luxlen Talent — Applied AI &amp; Data Recruiting for Regulated Industries</title>
+<meta name="description" content="Luxlen Talent is a recruiting and placement firm for regulated industries — life sciences, insurance, and financial services. We define and fill the emerging roles of applied AI: forward-deployed engineers, applied AI leaders, and the data talent behind them.">
+<link rel="canonical" href="https://luxlentalent.com/">
 
 <link rel="icon" type="image/png" href="logo.png">
 <link rel="apple-touch-icon" href="logo.png">
 
 <!-- Open Graph / social preview -->
-<meta property="og:title" content="Luxlen Talent — Talent for the AI era">
-<meta property="og:description" content="We define the emerging roles of applied AI before we fill them.">
-<meta property="og:image" content="logo.png">
+<meta property="og:title" content="Luxlen Talent — Applied AI &amp; Data Recruiting for Regulated Industries">
+<meta property="og:description" content="We define the emerging roles of applied AI before we fill them — for life sciences, insurance, and financial services.">
+<meta property="og:url" content="https://luxlentalent.com/">
+<meta property="og:site_name" content="Luxlen Talent">
+<!-- TODO: replace with a 1200x630 branded social card (e.g. https://luxlentalent.com/social-card.png)
+     and switch twitter:card to "summary_large_image" -->
+<meta property="og:image" content="https://luxlentalent.com/logo.png">
 <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+
+<!-- Structured data: helps Google understand & index a brand-new domain -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Luxlen Talent",
+  "url": "https://luxlentalent.com/",
+  "logo": "https://luxlentalent.com/logo.png",
+  "email": "info@luxlentalent.com",
+  "description": "Recruiting and placement for applied AI and enterprise data roles in regulated industries — life sciences, insurance, and financial services.",
+  "areaServed": "Northeastern United States",
+  "founder": {
+    "@type": "Person",
+    "name": "Hisham Elmanzalawy"
+  },
+  "knowsAbout": ["Applied AI recruiting", "Forward deployed engineers", "Data governance", "Data engineering", "Machine learning", "Enterprise data leadership"]
+}
+</script>
+
+<!-- Analytics (recommended): create a GA4 property or a Plausible account, then uncomment ONE of these.
+<script defer data-domain="luxlentalent.com" src="https://plausible.io/js/script.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+-->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -103,9 +134,34 @@
   .nav-links a:hover{color:var(--white)}
   .nav-links .btn{padding:10px 18px;font-size:14px;color:#fff}
   .nav-links .btn:hover{color:#fff}
+
+  /* mobile hamburger */
+  .menu-btn{
+    display:none;background:transparent;border:1px solid var(--line-dark);
+    border-radius:9px;padding:9px 11px;cursor:pointer;line-height:0;
+  }
+  .menu-btn svg{width:20px;height:20px;stroke:var(--white)}
+  .mobile-menu{
+    display:none;
+    border-top:1px solid var(--line-dark);
+    background:rgba(31,27,53,.97);
+    backdrop-filter:blur(10px);
+  }
+  .mobile-menu.open{display:block}
+  .mobile-menu a{
+    display:block;padding:15px 28px;
+    font-size:15.5px;font-weight:500;color:var(--muted-dark);
+    border-bottom:1px solid rgba(70,63,107,.4);
+  }
+  .mobile-menu a:last-child{border-bottom:none;color:var(--accent);font-weight:600}
+  .mobile-menu a:hover{color:var(--white)}
+
   @media(max-width:720px){
-    .nav-links a:not(.btn){display:none}
-    .brand .name{display:none}
+    .nav-links{display:none}
+    .menu-btn{display:inline-flex}
+  }
+  @media(min-width:721px){
+    .mobile-menu{display:none !important}
   }
 
   /* ---------- DARK BLOCK (hero + thesis) ---------- */
@@ -136,7 +192,7 @@
   .hero h1 .accent{color:var(--accent)}
   .hero .sub{
     font-size:clamp(17px,2vw,20px);
-    color:var(--muted-dark);max-width:640px;margin-bottom:34px;
+    color:var(--muted-dark);max-width:680px;margin-bottom:34px;
     line-height:1.55;
   }
   .hero-cta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
@@ -154,8 +210,9 @@
     border:1px solid var(--line-dark);border-radius:14px;
     padding:26px 24px;background:rgba(255,255,255,.02);
   }
-  .stat .num{font-family:var(--display);font-weight:700;font-size:23px;color:var(--accent);letter-spacing:-.01em;line-height:1.15}
-  .stat .lbl{color:var(--muted-dark);font-size:14.5px;margin-top:8px;line-height:1.45}
+  .stat .num{font-family:var(--display);font-weight:700;font-size:34px;color:var(--accent);letter-spacing:-.01em;line-height:1.1}
+  .stat .lbl{color:var(--muted-dark);font-size:14.5px;margin-top:10px;line-height:1.45}
+  .src-note{margin-top:16px;font-size:12.5px;color:var(--muted-dark);opacity:.7;max-width:660px}
   @media(max-width:680px){.stats{grid-template-columns:1fr}}
 
   /* ---------- LIGHT SECTIONS ---------- */
@@ -187,7 +244,22 @@
   .why-lede{font-size:17px;color:var(--muted);line-height:1.65}
   .why-lede + .why-lede{margin-top:16px}
   .why-lede strong{color:var(--ink);font-weight:600}
-  .why-kicker{margin-top:26px;font-family:var(--display);font-size:20px;font-weight:500;color:var(--ink);line-height:1.4}
+  .why-kicker{
+    margin-top:30px;padding:22px 26px;
+    border-left:3px solid var(--accent);
+    background:#fff;border-radius:0 14px 14px 0;
+    font-family:var(--display);font-size:20px;font-weight:500;color:var(--ink);line-height:1.4;
+  }
+  .why-proof{margin-top:26px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .li-link{
+    display:inline-flex;align-items:center;gap:.55em;
+    font-size:14.5px;font-weight:600;color:var(--accent-hover);
+    border:1px solid var(--line);background:#fff;
+    padding:11px 18px;border-radius:10px;
+    transition:border-color .16s ease, box-shadow .16s ease;
+  }
+  .li-link:hover{border-color:var(--accent);box-shadow:0 6px 18px -8px rgba(94,139,255,.45)}
+  .li-link svg{width:16px;height:16px;fill:currentColor}
 
   /* how it works */
   .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:step}
@@ -223,6 +295,13 @@
   .contact .sub{color:var(--muted-dark);font-size:17px;max-width:380px}
   .contact .direct{margin-top:28px;font-size:15px;color:var(--muted-dark)}
   .contact .direct a{color:var(--accent);font-weight:500}
+  .contact .candidates{
+    margin-top:30px;padding:18px 20px;
+    border:1px solid var(--line-dark);border-radius:12px;
+    background:rgba(255,255,255,.03);
+    font-size:14.5px;color:var(--muted-dark);line-height:1.55;max-width:380px;
+  }
+  .contact .candidates strong{color:var(--white);font-weight:600}
 
   form .field{margin-bottom:18px}
   form label{display:block;font-size:13.5px;font-weight:600;color:var(--muted-dark);margin-bottom:7px}
@@ -236,6 +315,7 @@
   form input:focus,form textarea:focus{border-color:var(--accent);background:rgba(255,255,255,.06)}
   form textarea{resize:vertical;min-height:120px}
   form .btn{margin-top:4px;width:100%;justify-content:center}
+  .privacy-note{margin-top:12px;font-size:12.5px;color:var(--muted-dark);opacity:.75;text-align:center}
   .hp{position:absolute;left:-9999px;opacity:0;height:0;width:0;overflow:hidden}
   #formStatus{margin-top:16px;font-size:14.5px;line-height:1.5;display:none}
   #formStatus.show{display:block}
@@ -268,14 +348,24 @@
       <img src="logo.png" alt="Luxlen Talent logo">
       <span class="name">Luxlen Talent</span>
     </a>
-    <nav class="nav-links">
+    <nav class="nav-links" aria-label="Primary">
       <a href="#approach">Approach</a>
       <a href="#roles">Roles</a>
       <a href="#why">Why Luxlen</a>
       <a href="#how">How it works</a>
       <a class="btn" href="#contact">Start a conversation</a>
     </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
   </div>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
+    <a href="#approach">Approach</a>
+    <a href="#roles">Roles</a>
+    <a href="#why">Why Luxlen</a>
+    <a href="#how">How it works</a>
+    <a href="#contact">Start a conversation →</a>
+  </nav>
 </header>
 
 <!-- ============ DARK: HERO + THESIS ============ -->
@@ -289,7 +379,7 @@
     <div class="wrap">
       <span class="eyebrow">Talent for the AI era</span>
       <h1>The AI era is rewriting the org chart. We place the roles it's <span class="accent">creating.</span></h1>
-      <p class="sub">Luxlen Talent helps organizations define and fill the emerging roles of applied AI — forward-deployed engineers, applied&nbsp;AI leaders, and the data talent behind them — before a mis-scoped search costs months.</p>
+      <p class="sub">Luxlen Talent helps regulated organizations — life sciences, insurance, and financial services — define and fill the emerging roles of applied AI: forward-deployed engineers, applied&nbsp;AI leaders, and the data talent behind them, before a mis-scoped search costs months.</p>
       <div class="hero-cta">
         <a class="btn" href="#contact">Start a conversation</a>
         <a class="scrolllink" href="#approach">See how we work ↓</a>
@@ -302,12 +392,13 @@
     <div class="wrap">
       <span class="eyebrow">The shift</span>
       <h2 class="reveal">New roles, barely defined — and multiplying fast.</h2>
-      <p class="lede reveal">Forward-deployed and applied-AI roles are the fastest-growing hiring category in enterprise technology. But the same job shows up under half a dozen titles, comp bands swing wildly, and the hardest part of the search isn't finding candidates — it's defining the role well enough to recognize the right one.</p>
+      <p class="lede reveal">Forward-deployed and applied-AI roles are among the fastest-growing in tech — postings grew more than sevenfold in the past year. But the same job shows up under half a dozen titles, comp bands swing wildly, and the hardest part of the search isn't finding candidates — it's defining the role well enough to recognize the right one.</p>
       <div class="stats">
-        <div class="stat reveal"><div class="num">Brand-new</div><div class="lbl">Forward-deployed roles barely existed a few years ago — now they're one of the fastest-growing categories in enterprise tech.</div></div>
-        <div class="stat reveal"><div class="num">Many names</div><div class="lbl">The same role is advertised under a whole range of titles, so keyword-matching searches miss the best-fit people.</div></div>
-        <div class="stat reveal"><div class="num">Customer-facing</div><div class="lbl">Far more embedded and customer-facing than a traditional back-office engineering seat.</div></div>
+        <div class="stat reveal"><div class="num">+729%</div><div class="lbl">Growth in forward-deployed engineer job postings in one year — from 643 to 5,330 openings (Apr 2025 → Apr 2026).</div></div>
+        <div class="stat reveal"><div class="num">#1</div><div class="lbl">"AI Engineer" is LinkedIn's fastest-growing job title in the U.S. for 2026.</div></div>
+        <div class="stat reveal"><div class="num">NYC</div><div class="lbl">New York has passed San Francisco as the largest U.S. hub for forward-deployed roles — driven by regulated-industry demand.</div></div>
       </div>
+      <p class="src-note">Sources: Indeed job-postings data reported by Business Insider (2026); LinkedIn Jobs on the Rise (2026).</p>
     </div>
   </section>
 </div>
@@ -382,7 +473,7 @@
         </ul>
       </div>
     </div>
-    <p class="whatdo-foot" style="margin-top:30px">The right role depends on the gap you're closing — the same problem can call for a forward-deployed engineer at one company and a data lead at another. <b>Working out which is the conversation we start with.</b></p>
+    <p class="whatdo-foot" style="margin-top:30px">The right role depends on the gap you're closing — the same problem can call for a forward-deployed engineer at one company and a data lead at another. <b>Figuring out which one you need — that's where every engagement starts.</b></p>
   </div>
 </section>
 
@@ -394,9 +485,16 @@
       <h2>An insider who has built these org structures — not a keyword matcher.</h2>
     </div>
     <div class="why-body">
-      <p class="why-lede">Luxlen is led by <strong>Hisham Elmanzalawy</strong>, who spent two decades leading enterprise data and cloud transformation inside large, highly regulated organizations.</p>
-      <p class="why-lede">His experience runs the full arc of enterprise data — from governance and quality through large-scale modernization — along with the workforce planning that decides how those teams are shaped and staffed. It's the work of defining roles and building teams from the inside, grounded in credentials across program delivery, cloud, and AI governance.</p>
+      <p class="why-lede">Luxlen is led by <strong>Hisham Elmanzalawy</strong>, who spent nearly three decades inside the industries we serve — close to two decades supporting the pharmaceutical industry through large-scale technology and program delivery, then a decade leading enterprise data and cloud transformation at a Fortune 100 insurer.</p>
+      <p class="why-lede">His experience runs the full arc of enterprise data — governance and quality through large-scale modernization — along with the workforce planning that decides how those teams are shaped and staffed. Program delivery, cloud architecture, FinOps, AI governance: the disciplines these roles are built from, practiced from the inside of the Northeast corridor where regulated-industry hiring concentrates.</p>
       <p class="why-kicker">That's the difference between someone who has read the job description and someone who has written it.</p>
+      <div class="why-proof">
+        <!-- TODO: replace # with Hisham's LinkedIn profile URL -->
+        <a class="li-link" href="www.linkedin.com/in/hishamelmanzalawy" rel="me noopener" target="_blank">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          Verify on LinkedIn
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -417,7 +515,7 @@
       <div class="step">
         <div class="idx">STEP 02</div>
         <h3>Source</h3>
-        <p>We find people who fit that definition, drawing on a network built over two decades in enterprise data and technology.</p>
+        <p>We find people who fit that definition, drawing on a network built over decades in enterprise data and technology.</p>
       </div>
       <div class="step">
         <div class="idx">STEP 03</div>
@@ -436,6 +534,7 @@
       <h2>Tell us what you're trying to hire.</h2>
       <p class="sub">Whether the role is fully scoped or still a rough idea, that's exactly where we come in.</p>
       <p class="direct">Prefer email? <a class="email-link" href="#">email us</a></p>
+      <p class="candidates"><strong>Candidates:</strong> exploring your next role in data or applied AI? Reach out — we like to know great people before the right search opens.</p>
     </div>
 
     <div>
@@ -443,6 +542,8 @@
       <!--  CONTACT FORM — powered by Web3Forms (free, no server needed) -->
       <!--  Access key is set below. Submissions are delivered to the    -->
       <!--  email registered with that key at web3forms.com.             -->
+      <!--  RECOMMENDED: in the Web3Forms dashboard, enable domain       -->
+      <!--  allow-listing so only luxlentalent.com can submit.           -->
       <!-- ============================================================= -->
       <form id="contactForm" novalidate>
         <input type="hidden" name="access_key" value="dc7341b7-868e-4598-babc-51e223502134">
@@ -468,6 +569,7 @@
           <textarea id="f-msg" name="message" placeholder="A rough description is fine — even just the problem you're trying to solve." required></textarea>
         </div>
         <button class="btn" type="submit" id="submitBtn">Send message</button>
+        <p class="privacy-note">We'll only use your details to reply to you — nothing else.</p>
         <p id="formStatus" role="status" aria-live="polite"></p>
       </form>
     </div>
@@ -481,10 +583,12 @@
       <img src="logo.png" alt="">
       <div>
         <div class="fname">Luxlen Talent</div>
-        <div class="ftag">Talent for the AI era</div>
+        <div class="ftag">Applied AI &amp; data talent for regulated industries</div>
       </div>
     </div>
     <div class="foot-right">
+      <!-- TODO: replace # with Hisham's LinkedIn profile URL -->
+      <a href="#" rel="me noopener" target="_blank">LinkedIn</a>
       <a class="email-link" href="#">email</a>
       <span>© <span id="yr"></span> Luxlen Talent</span>
     </div>
@@ -495,11 +599,26 @@
   document.getElementById('yr').textContent = new Date().getFullYear();
 
   // Assemble the email at runtime so it isn't sitting in the raw HTML for scrapers
-  var eUser = 'info', eDom = 'luxlenTalent.com';
+  var eUser = 'info', eDom = 'luxlentalent.com';
   var EMAIL = eUser + '@' + eDom;
   document.querySelectorAll('.email-link').forEach(function(a){
     a.textContent = EMAIL;
     a.href = 'mailto:' + EMAIL;
+  });
+
+  // Mobile menu
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', ()=>{
+    const open = mobileMenu.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+  mobileMenu.querySelectorAll('a').forEach(a=>{
+    a.addEventListener('click', ()=>{
+      mobileMenu.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded','false');
+    });
   });
 
   // Scroll reveal
@@ -525,6 +644,14 @@
 
   form.addEventListener('submit', async (e)=>{
     e.preventDefault();
+
+    // Validate before sending — novalidate suppresses the browser's automatic
+    // check, so we trigger it explicitly (blocks blank submissions).
+    if (!form.checkValidity()){
+      form.reportValidity();
+      return;
+    }
+
     const key = form.querySelector('[name=access_key]').value.trim();
 
     if (key === KEY_PLACEHOLDER || key === ''){
