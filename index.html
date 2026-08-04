@@ -356,6 +356,23 @@
   @media (prefers-reduced-motion: no-preference){
     .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease, transform .7s ease}
     .reveal.in{opacity:1;transform:none}
+    /* sequenced reveals */
+    .steps .step:nth-child(2){transition-delay:.15s}
+    .steps .step:nth-child(3){transition-delay:.3s}
+    .roles-grid .role-group:nth-child(2){transition-delay:.12s}
+    .roles-grid .role-group:nth-child(3){transition-delay:.24s}
+    .roles-grid .role-group:nth-child(4){transition-delay:.36s}
+    /* gap diagram draws itself */
+    .gapfig .gf-node{opacity:0;transition:opacity .5s ease .1s}
+    .gapfig .gf-bridge{transform:scaleX(0);transform-origin:left center;transition:transform .6s ease .35s}
+    .gapfig .gf-pill{opacity:0;transform:translate(-50%,-50%) scale(.6);transition:opacity .35s ease .95s, transform .45s cubic-bezier(.34,1.56,.64,1) .95s}
+    .gapfig.in .gf-node{opacity:1}
+    .gapfig.in .gf-bridge{transform:scaleX(1)}
+    .gapfig.in .gf-pill{opacity:1;transform:translate(-50%,-50%) scale(1)}
+  }
+  @media (prefers-reduced-motion: no-preference) and (max-width:640px){
+    .gapfig .gf-bridge{transform:scaleY(0);transform-origin:center top}
+    .gapfig.in .gf-bridge{transform:scaleY(1)}
   }
 </style>
 </head>
@@ -454,7 +471,7 @@
         <div class="gf-node">A non-technical buyer</div>
       </div>
       <div class="stats">
-        <div class="stat reveal"><div class="num">+729%</div><div class="lbl">Growth in forward-deployed engineer job postings in one year: from 643 to 5,330 openings (Apr 2025 to Apr 2026).</div></div>
+        <div class="stat reveal"><div class="num" data-count="729">+729%</div><div class="lbl">Growth in forward-deployed engineer job postings in one year: from 643 to 5,330 openings (Apr 2025 to Apr 2026).</div></div>
         <div class="stat reveal"><div class="num">#1</div><div class="lbl">"AI Engineer" is LinkedIn's fastest-growing job title in the U.S. for 2026.</div></div>
         <div class="stat reveal"><div class="num">NYC</div><div class="lbl">New York has passed San Francisco as the largest U.S. hub for forward-deployed roles, driven by regulated-industry demand.</div></div>
       </div>
@@ -495,7 +512,7 @@
       <p class="roles-intro">Forward-deployed and applied-AI roles are where we spend most of our time: new titles, thin talent pools, high stakes. The established data roles around them matter just as much once AI ships, and we place those too.</p>
     </div>
     <div class="roles-grid">
-      <div class="role-group core">
+      <div class="role-group core reveal">
         <span class="core-tag">Core practice</span>
         <span class="fn">Forward-deployed &amp; applied AI</span>
         <ul>
@@ -505,7 +522,7 @@
           <li>Head of Data / CDO</li>
         </ul>
       </div>
-      <div class="role-group">
+      <div class="role-group reveal">
         <span class="fn">Data science &amp; ML</span>
         <ul>
           <li>Data Scientist</li>
@@ -514,7 +531,7 @@
           <li>MLOps Engineer</li>
         </ul>
       </div>
-      <div class="role-group">
+      <div class="role-group reveal">
         <span class="fn">Data engineering &amp; analytics</span>
         <ul>
           <li>Data Engineer</li>
@@ -523,7 +540,7 @@
           <li>BI / Analytics Developer</li>
         </ul>
       </div>
-      <div class="role-group">
+      <div class="role-group reveal">
         <span class="fn">Data governance &amp; quality</span>
         <ul>
           <li>Data Governance Lead</li>
@@ -571,17 +588,17 @@
       <h2>Three steps. One accountable partner.</h2>
     </div>
     <div class="steps">
-      <div class="step">
+      <div class="step reveal">
         <div class="idx">STEP 01</div>
         <h3>Scope</h3>
         <p>We work with you to define the role: what it owns, who it reports to, and the real skill mix hiding behind the title.</p>
       </div>
-      <div class="step">
+      <div class="step reveal">
         <div class="idx">STEP 02</div>
         <h3>Source</h3>
         <p>We find people who fit that definition, drawing on a network built over decades in enterprise data and technology.</p>
       </div>
-      <div class="step">
+      <div class="step reveal">
         <div class="idx">STEP 03</div>
         <h3>Place</h3>
         <p>We stay accountable through the offer and the start, and we check the role still fits once the person is in the seat.</p>
@@ -690,7 +707,25 @@
   // Scroll reveal
   if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches){
     const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('in');
+          const c = e.target.querySelector('.num[data-count]');
+          if (c && !c.dataset.done){
+            c.dataset.done = '1';
+            const target = parseInt(c.dataset.count, 10);
+            const dur = 1300, start = performance.now();
+            const tick = (now) => {
+              const t = Math.min(1, (now - start) / dur);
+              const eased = 1 - Math.pow(1 - t, 3);
+              c.textContent = '+' + Math.round(eased * target) + '%';
+              if (t < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+          }
+          io.unobserve(e.target);
+        }
+      });
     },{threshold:.15});
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   } else {
