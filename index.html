@@ -251,6 +251,14 @@
 
   /* why luxlen */
   .why-body{max-width:760px}
+  .why-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:stretch}
+  .why-photo{margin:0;border-radius:16px;overflow:hidden;box-shadow:0 24px 50px -24px rgba(47,42,74,.45)}
+  .why-photo img{width:100%;height:100%;object-fit:cover;display:block;min-height:320px}
+  .photo-band{height:clamp(160px,24vw,300px);background:url('band-selection.jpg') center/cover no-repeat}
+  @media(max-width:900px){
+    .why-grid{grid-template-columns:1fr;gap:28px}
+    .why-photo img{min-height:0;height:230px}
+  }
   .why-lede{font-size:17px;color:var(--muted);line-height:1.65}
   .why-lede + .why-lede{margin-top:16px}
   .why-lede strong{color:var(--ink);font-weight:600}
@@ -537,6 +545,7 @@
       <span class="eyebrow on-light">Why Luxlen</span>
       <h2>Built inside the industries we serve.</h2>
     </div>
+    <div class="why-grid">
     <div class="why-body">
       <p class="why-lede">Luxlen wasn't built by career recruiters. It grew out of nearly thirty years on your side of the hiring table: twenty years delivering technology programs for pharmaceutical companies, then a decade leading data and cloud transformation at a Fortune 100 insurer.</p>
       <p class="why-lede">So we've done the parts of hiring that never make it into the posting. Written the job descriptions. Argued for the headcount. Rebuilt teams after acquisitions, and hired for roles that didn't have names yet. We've also watched good searches fall apart, and it was almost never because talent was scarce. Usually nobody had agreed on what the job actually was before the calls started.</p>
@@ -548,6 +557,8 @@
           Our leadership on LinkedIn
         </a>
       </div>
+    </div>
+    <figure class="why-photo"><img src="why-lab.jpg" alt="Glassware on a pharmaceutical laboratory bench" loading="lazy"></figure>
     </div>
   </div>
 </section>
@@ -578,6 +589,9 @@
     </div>
   </div>
 </section>
+
+<!-- ============ VISUAL DIVIDER ============ -->
+<div class="photo-band" aria-hidden="true"></div>
 
 <!-- ============ CONTACT ============ -->
 <section class="dark contact" id="contact">
